@@ -587,24 +587,26 @@
 
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- js link  -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
 <script src="js/miarchivo.js"></script>
+<script>
+    let url = 'https://jsonplaceholder.typicode.com/users'
+    fetch (url)
+        .then (response => response.json())
+        .then (data => mostrarData(data))
+        .catch (error => console.log(error))
+
+    const mostrarData = (data) => {
+        console.log(data)
+        let body = ''
+        for (let i = 0; i <data.length; i ++){
+            body += `<input>${data[i].id}<input>${data[i].email}<input>${data[i].contraseña}<input>${data[i].remember}`
+        }
+
+        document.getElementById('data').innerHTML = body
+    }
+</script>
 
 </body>
 </html>
